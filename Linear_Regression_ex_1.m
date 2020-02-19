@@ -46,7 +46,7 @@ plot(Xline,L2*Xline+a2,'--','color',[.75 .75 .75 ],'linewidth',2)
 text(4,4.2,['95% CI in grey dashed lines'],'fontname','Georgia','fontsize',12)
 totalSS=SumY2-SumY^2/n;    %totalSS is essentially the sum of the square of the difference between (each y and mean Y);
 regressionSS=Sumxy^2/Sumx2;
-r2=regressionSS/totalSS; %r2=0.973306639375260
+r2=regressionSS/totalSS; %answer r2=0.973306639375260
 text(4,4.5,['r^2=' num2str(r2)],'fontname','Georgia','fontsize',12)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
