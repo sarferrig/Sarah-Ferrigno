@@ -1,0 +1,104 @@
+%load RNAi_total excel table%
+%
+%create table of individual averages for each fly across the three days of
+%sleep behavior recording%
+%
+IndividualMeans = table;
+%
+IndividualMeans.T1F1 = mean(RNAitotal{:,2:4},2);
+IndividualMeans.T1F2 = mean(RNAitotal{:,5:7},2);
+IndividualMeans.T1F5 = mean(RNAitotal{:,8:10},2);
+IndividualMeans.T2F1 = mean(RNAitotal{:,11:13},2);
+IndividualMeans.T2F2 = mean(RNAitotal{:,14:16},2);
+IndividualMeans.T2F3 = mean(RNAitotal{:,17:18},2);
+IndividualMeans.T2F4 = mean(RNAitotal{:,19:21},2);
+IndividualMeans.T2F5 = mean(RNAitotal{:,22:24},2);
+IndividualMeans.T3F1 = mean(RNAitotal{:,25:27},2);
+IndividualMeans.T3F2 = mean(RNAitotal{:,28:30},2);
+IndividualMeans.T3F3 = mean(RNAitotal{:,31:33},2);
+IndividualMeans.T3F4 = mean(RNAitotal{:,34:36},2);
+%
+%make "DIY" actogram from these means-- not stacking the raw periods from RNAitotal because it's
+%just harder to visualize 36 plots at once compared to 12%
+DIYactogram = stackedplot(IndividualMeans)
+%
+%now it's time to look at just the dark cycle only! woo get hype!%
+Nightonly = table;
+%
+Nightonly.T1F1 = mean(RNAitotal{13:24,2:4},2);
+Nightonly.T1F2 = mean(RNAitotal{13:24,5:7},2);
+Nightonly.T1F5 = mean(RNAitotal{13:24,8:10},2);
+Nightonly.T2F1 = mean(RNAitotal{13:24,11:13},2);
+Nightonly.T2F2 = mean(RNAitotal{13:24,14:16},2);
+Nightonly.T2F3 = mean(RNAitotal{13:24,17:18},2);
+Nightonly.T2F4 = mean(RNAitotal{13:24,19:21},2);
+Nightonly.T2F5 = mean(RNAitotal{13:24,22:24},2);
+Nightonly.T3F1 = mean(RNAitotal{13:24,25:27},2);
+Nightonly.T3F2 = mean(RNAitotal{13:24,28:30},2);
+Nightonly.T3F3 = mean(RNAitotal{13:24,31:33},2);
+Nightonly.T3F4 = mean(RNAitotal{13:24,34:36},2);
+%
+%same deal as before%
+DIYnightactogram = stackedplot(Nightonly)
+%
+%load CTL1_total excel%
+IndividualMeansCTL1 = table;
+%
+IndividualMeansCTL1.T1F10 = mean(CTL1total{:,2:4},2);
+IndividualMeansCTL1.T1F11 = mean(CTL1total{:,5:7},2);
+IndividualMeansCTL1.T1F12 = mean(CTL1total{:,8:10},2);
+IndividualMeansCTL1.T1F13 = mean(CTL1total{:,11:13},2);
+IndividualMeansCTL1.T1F14 = mean(CTL1total{:,14:16},2);
+IndividualMeansCTL1.T2F11 = mean(CTL1total{:,17:18},2);
+IndividualMeansCTL1.T2F12 = mean(CTL1total{:,19:21},2);
+IndividualMeansCTL1.T2F13 = mean(CTL1total{:,22:24},2);
+IndividualMeansCTL1.T2F14 = mean(CTL1total{:,25:27},2);
+IndividualMeansCTL1.T3F10 = mean(CTL1total{:,28:30},2);
+IndividualMeansCTL1.T3F11 = mean(CTL1total{:,31:33},2);
+IndividualMeansCTL1.T3F12 = mean(CTL1total{:,34:36},2);
+IndividualMeansCTL1.T3F13 = mean(CTL1total{:,37:39},2);
+IndividualMeansCTL1.T3F14 = mean(CTL1total{:,40:42},2);
+%
+DIYactogramCTL1 = stackedplot(IndividualMeansCTL1)
+%
+%load CTL2_total excel%
+IndividualMeansCTL2 = table;
+%
+IndividualMeansCTL2.T1F20 = mean(CTL1total{:,2:4},2);
+IndividualMeansCTL2.T1F21 = mean(CTL1total{:,5:7},2);
+IndividualMeansCTL2.T1F22 = mean(CTL1total{:,8:10},2);
+IndividualMeansCTL2.T1F23 = mean(CTL1total{:,11:13},2);
+IndividualMeansCTL2.T2F20 = mean(CTL1total{:,14:16},2);
+IndividualMeansCTL2.T2F21 = mean(CTL1total{:,17:18},2);
+IndividualMeansCTL2.T2F22 = mean(CTL1total{:,19:21},2);
+IndividualMeansCTL2.T2F23 = mean(CTL1total{:,22:24},2);
+IndividualMeansCTL2.T2F24 = mean(CTL1total{:,25:27},2);
+IndividualMeansCTL2.T3F21 = mean(CTL1total{:,28:30},2);
+IndividualMeansCTL2.T3F22 = mean(CTL1total{:,31:33},2);
+IndividualMeansCTL2.T3F23 = mean(CTL1total{:,34:36},2);
+%
+%
+%
+DIYactogramCTL2 = stackedplot(IndividualMeansCTL2)
+%
+%was gonna look at night only for the controls too but I honestly dont
+%think these figures that I've generated would be very helpful at that
+%resolution$
+%
+%toyed around with trying to visualize the distribution between these flies
+%but I think I'm just going to come back to this for the final portion of
+%the project because it honestly just looks like a mess to me%
+Distribution = table;
+Distribution = rows2vars(IndividualMeans);
+Distribution = removevars(Distribution, 'OriginalVariableNames');
+%
+%
+%creating the table of random numbers between 0 and 60 minutes of sleep
+%(see "Single Period/Polar Charts" tab of excel sheet)%
+rng(0,'twister');
+a = 0;
+b = 60;
+r = (b-a).*rand(24,36) + a;
+r_range = [min(r) max(r)]; %checks it%
+%
+%%%%%end%%%%%%%%
